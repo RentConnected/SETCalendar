@@ -1,0 +1,284 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+    ShareDialogModels shareDialogModels = new ShareDialogModels();
+    string CurrentUrl = ViewData["Url"].ToString();
+    string BaseUrl = ViewData["BaseUrl"].ToString();
+}
+
+<section class="nav-dialog desktop" id="navdialog">
+    <div class="button-dialog-right" style="@Localizer["4style"]">
+        <div class="row">
+            <div class="column">
+                <p class="header-text-orange">@Localizer["4header"]</p>
+                <p class="text-black">@Localizer["4text"]</p>
+            </div>
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+4)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="button-dialog-right" style="@Localizer["5style"]">
+        <div class="row">
+            <div class="column">
+                <p class="header-text-orange">@Localizer["5header"]</p>
+                <p class="text-white">@Localizer["5text"]</p>
+            </div>
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+5)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="button-dialog-left" style="@Localizer["11style"]">
+        <div class="row">
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+11)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+            <div class="column">
+                <p class="header-text-orange">@Localizer["11header"]</p>
+                <p class="text-black">@Localizer["11text"]</p>
+            </div>
+        </div>
+    </div>
+    <div class="button-dialog-left" style="@Localizer["26style"]">
+        <div class="row">
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+26)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+            <div class="column">
+                <p class="header-text-white">@Localizer["26header"]</p>
+                <p class="text-black">@Localizer["26text"]</p>
+                <p class="text-black">@Localizer["26text1"]</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image-calendar desktop" id="cover" onload="javascript: coverLoaded();" style="background-image: url('@BaseUrl/images/index.jpg');background-repeat: no-repeat;background-size: cover;background-position: center center;height: 100vh;width: 100%">
+</section>
+<section class="image-calendar mobile">
+    <img src="@BaseUrl/images/index.mobile.jpg" style="width: 100%" />
+</section>
+
+<section class="pagination desktop">
+    <div class="div-pagination" style="bottom: 6vh;right: 18%;">
+        <a class="pagination-left" href="@Url.Action("Index", "November")">
+            <img src="~/images/shared/pagination-left-orange.svg" />
+        </a>
+        <a class="pagination-right" href="@Url.Action("Index", "July")">
+            <img src="~/images/shared/pagination-right-orange.svg" />
+        </a>
+    </div>
+</section>
+
+<section class="pagination container mobile">
+    <div class="div-pagination" style="bottom: 2vh; justify-content: space-between; width: 87vw; margin-left: -3vw;">
+        <a class="pagination-left-mobile" href="@Url.Action("Index", "November")">
+            <img src="~/images/shared/backwhite.mobile.svg" />
+        </a>
+        <a class="pagination-right-mobile" href="@Url.Action("Index", "July")">
+            <img src="~/images/shared/nextwhite.mobile.svg" />
+        </a>
+    </div>
+</section>
+
+<section class="nav-dialog mobile">
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+4)">
+                    <img src="@BaseUrl/images/image 4.mobile.jpg" />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["4header"]</p>
+                    <p class="text-black">@Localizer["4text"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+5)">
+                    <img src="@BaseUrl/images/image 5.mobile.jpg" />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["5header"]</p>
+                    <p class="text-black">@Localizer["5text"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+11)">
+                    <img src="@BaseUrl/images/image 11.mobile.jpg" />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["11header"]</p>
+                    <p class="text-black">@Localizer["11text"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+26)">
+                    <img src="@BaseUrl/images/image 26.mobile.jpg" />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["26header"]</p>
+                    <p class="text-black">@Localizer["26text"]</p>
+                    <p class="text-black">@Localizer["26text1"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="desktop">
+    <div class="modal fade hide" id="@("dialog" + 4)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 4.jpg" class="infographic-image" loading="lazy" />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={4}" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialog" + 5)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 5.jpg" class="infographic-image" loading="lazy" />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={5}" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialog" + 11)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 11.jpg" class="infographic-image" loading="lazy" />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={11}" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialog" + 26)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 26.jpg" class="infographic-image" loading="lazy" />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={26}" })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mobile">
+    <div class="modal fade hide" id="@("dialogmobile" + 26)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 26.jpg" class="infographic-image" loading="lazy" />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={26}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialogmobile" + 4)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 4.jpg" class="infographic-image" loading="lazy" />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.mobile.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={4}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialogmobile" + 5)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 5.jpg" class="infographic-image" loading="lazy" />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.mobile.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={5}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialogmobile" + 11)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 11.jpg" class="infographic-image" loading="lazy" />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.mobile.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={11}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

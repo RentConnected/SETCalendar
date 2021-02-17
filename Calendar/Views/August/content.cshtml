@@ -1,0 +1,183 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+    ShareDialogModels shareDialogModels = new ShareDialogModels();
+    string CurrentUrl = ViewData["Url"].ToString();
+    string BaseUrl = ViewData["BaseUrl"].ToString();
+}
+
+<section class="nav-dialog desktop" id="navdialog">
+    <div class="button-dialog-left" style="@Localizer["30style"]">
+        <div class="row">
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+30)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+            <div class="column">
+                <p class="header-text-orange">@Localizer["30header"]</p>
+                <p class="text-black">@Localizer["30text"]</p>
+            </div>
+        </div>
+    </div>
+    <div class="button-dialog-right" style="@Localizer["12style"]">
+        <div class="row">
+            <div class="column">
+                <p class="header-text-orange">@Localizer["12header"]</p>
+                <p class="text-black">@Localizer["12text"]</p>
+            </div>
+            <div class="column">
+                <a data-toggle="modal" data-target="@("#dialog"+12)">
+                    <img src="~/images/shared/circle.svg" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image-calendar desktop" id="cover" onended="javascript: coverLoaded();" onload="javascript: coverLoaded();" style="background-image: url('@BaseUrl/images/index.jpg');background-repeat: no-repeat;background-size: cover;background-position: center center;height: 100vh;width: 100%">
+</section>
+<section class="image-calendar mobile">
+    <img src="@BaseUrl/images/index.mobile.jpg" style="width: 100%" />
+</section>
+
+
+<section class="pagination desktop">
+    <div class="div-pagination" style="bottom: 6vh;right: 18%;">
+        <a class="pagination-left" href="@Url.Action("Index", "July")">
+            <img src="~/images/shared/pagination-left.svg" />
+        </a>
+        <a class="pagination-right" href="@Url.Action("Index", "September")">
+            <img src="~/images/shared/pagination-right.svg" />
+        </a>
+    </div>
+</section>
+
+<section class="pagination container mobile">
+    <div class="div-pagination" style="bottom: 2vh;justify-content: space-between;width: 87vw;margin-left: -3vw;">
+        <a class="pagination-left-mobile" href="@Url.Action("Index", "July")">
+            <img src="~/images/shared/backwhite.mobile.svg" />
+        </a>
+        <a class="pagination-right-mobile" href="@Url.Action("Index", "September")">
+            <img src="~/images/shared/nextwhite.mobile.svg" />
+        </a>
+    </div>
+</section>
+
+<section class="nav-dialog mobile">
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+12)">
+                    <img src="@BaseUrl/images/image 12.mobile.jpg" loading=”lazy” />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["12header"]</p>
+                    <p class="text-black">@Localizer["12text"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="column-image">
+                <a data-toggle="modal" data-target="@("#dialogmobile"+30)">
+                    <img src="@BaseUrl/images/image 30.mobile.jpg" loading=”lazy” />
+                </a>
+            </div>
+            <div class="column-text">
+                <div class="verticlecenter">
+                    <p class="header-text-orange">@Localizer["30header"]</p>
+                    <p class="text-black">@Localizer["30textmobile"]</p>
+                    <p class="text-black">@Localizer["30textmobile1"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="desktop">
+    <div class="modal fade hide" id="@("dialog" + 12)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close" href="@BaseUrl">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 12.jpg" class="infographic-image" loading=”lazy” />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={12}" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialog" + 30)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close" href="@BaseUrl">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog">
+            <div class="modal-content">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 30.jpg" class="infographic-image" loading=”lazy” />
+                </div>
+                <div class="share-panel-dialog">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={30}" })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mobile">
+    <div class="modal fade hide" id="@("dialogmobile" + 12)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close" href="@BaseUrl">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 12.jpg" class="infographic-image" loading=”lazy” />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.mobile.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={12}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade hide" id="@("dialogmobile" + 30)" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <a class="btn-close" data-dismiss="modal" aria-label="Close" href="@BaseUrl">
+            <img src="~/images/shared/button-close.svg" style="width: 4vw;max-width: 30px;" />
+        </a>
+        <div class="modal-dialog custom-size-dialog">
+            <div class="modal-content modal-black">
+                <div class="infograpic">
+                    <img src="@BaseUrl/images/image 30.jpg" class="infographic-image" loading=”lazy” />
+                    <div class="share-panel-dialog">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.Dialog.mobile.cshtml", new ShareDialogModels() { Url = $"{BaseUrl}?date={30}" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="modal fade hide" id="menu" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered custom-size-dialog-sharesocial" style="overflow-y:hidden">
+            <div class="modal-content">
+                <a class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <img src="~/images/shared/button-close-black.svg" style="width:4vw;max-width: 30px;" />
+                </a>
+                <div class="share-panel-dialog-sharesocial">
+                    @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.cshtml", new ShareDialogModels() { Url = BaseUrl })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

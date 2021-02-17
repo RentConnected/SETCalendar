@@ -1,0 +1,128 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    string BaseUrl = ViewData["Url"].ToString();
+}
+
+<section class="image-calendar desktop" style="background-image: url('@BaseUrl/images/index.jpg');background-repeat: no-repeat;background-size: cover;background-position: center center;height: 100vh;width: 100%">
+</section>
+<section class="image-calendar mobile">
+    <img src="@BaseUrl/images/index.mobile.jpg" style="width: 100%" />
+</section>
+
+
+<section class="content-care-the-world">
+    <div class="header-of-care-the-world">
+        <div class="desktop">
+            <p><b>@Localizer["headerdesktop1"]</b></p>
+            <p><b>@Localizer["headerdesktop2"]</b></p>
+            <p><b>@Localizer["headerdesktop3"]</b></p>
+        </div>
+        <div class="mobile">
+            <p><b>@Localizer["headermobile1"]</b></p>
+            <p><b>@Localizer["headermobile2"]</b></p>
+            <p><b>@Localizer["headermobile3"]</b></p>
+        </div>
+    </div>
+</section>
+
+<section class="care-the-world">
+    <div class="d-flex justify-content-center">
+        <a target="_blank" rel="noopener noreferrer" href="https://www.carethebear.com/" class="logocarethebear">
+            <img src="~/images/logo/carethebear.png">
+        </a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.setsocialimpact.com/impact-care/care-the-whale/" class="logocarethewhale">
+            <img src="~/images/logo/carethewhale.png">
+        </a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.setsocialimpact.com/impact-care/care-the-wild/" class="logocarethewild">
+            <img src="~/images/logo/carethewild.png">
+        </a>
+    </div>
+</section>
+
+<section class="content-care-the-world">
+    <div class="header-of-care-the-world">
+        <p><b>@Localizer["contentheader1"]</b></p>
+        <p><b>@Localizer["contentheader2"]</b></p>
+    </div>
+    <div class="content-of-care-the-world">
+        <p>@Localizer["contenttext1"]</p>
+        <p>@Localizer["contenttext2"]</p>
+        <p>@Localizer["contenttext3"]</p>
+        <p>@Localizer["contenttext4"]</p>
+        <p>@Localizer["contenttext5"]</p>
+    </div>
+</section>
+
+<section class="nav-month container">
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "July")">
+                <img src="@BaseUrl/images/7 July.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlayjuly"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlayjuly"]</div>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "August")">
+                <img src="@BaseUrl/images/8 Aug.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlayaugust"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlayaugust"]</div>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "September")">
+                <img src="@BaseUrl/images/9 Sep.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlayseptember"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlayseptember"]</div>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "October")">
+                <img src="@BaseUrl/images/10 Oct.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlayoctober"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlayoctober"]</div>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "November")">
+                <img src="@BaseUrl/images/11 Nov.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlaynovember"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlaynovember"]</div>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="@Url.Action("Index", "December")">
+                <img src="@BaseUrl/images/12 Dec.jpg" />
+                <div class="overlay-desktop desktop">
+                    <div class="text">@Localizer["overlaydecember"]</div>
+                </div>
+                <div class="overlay-mobile mobile">
+                    <div class="text">@Localizer["overlaydecember"]</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

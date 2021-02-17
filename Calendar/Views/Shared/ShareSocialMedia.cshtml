@@ -1,0 +1,125 @@
+﻿@model Calendar.Models.ShareDialogModels
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+
+    string ShareUrl = Model.Url;
+    string ShareTitle = "TestTitle";
+
+
+    string twitter = "https://twitter.com/intent/tweet?" + "text=%0A&%0A&" + "url=" + ShareUrl + "%0A%0A&hashtags=caretheworldday%0A&hashtags=carethewild&hashtags=carethebear&hashtags=carethewhale%0A&hashtags=SETMakeitWorkforEveryone";
+
+}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two unequal columns that floats next to each other */
+    .column {
+        float: left;
+        padding: 0px;
+    }
+
+        .column img {
+            width: 10vw;
+            height: 10vw;
+            max-width: 42px;
+            max-height: 42px;
+        }
+
+    .btn-close {
+        width: 4vw;
+        max-width: 30px;
+    }
+
+    .left {
+        width: 18%;
+    }
+
+    .right {
+        width: 82%;
+    }
+
+    .row {
+        padding: 20px 20px;
+    }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    @@media(max-width:1100px) {
+        .socialmedia p {
+            font-size: 3rem;
+            line-height: 2.5rem;
+            padding-left: 20px;
+        }
+    }
+
+    @@media(min-width:1100px) {
+        .socialmedia p {
+            font-size: 4vw;
+            line-height: 40px;
+        }
+    }
+</style>
+
+<section>
+    <div class="socialmedia">
+        <a class="" href="#" onclick="share_fb('@ShareUrl','@ShareTitle',450,450);return false;" rel="nofollow" share_url="@ShareUrl" target="_blank">
+            <div class="row">
+                <div class="column left" style="">
+                    <img src="~/images/logo/facebook.svg" />
+                </div>
+                <div class="column right" style="">
+                    <p><b>Facebook</b></p>
+                </div>
+            </div>
+        </a>
+
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+        <a class="" href="@twitter"
+           data-size="large"
+           data-text="THGreenDay"
+           data-url="@ShareUrl"
+           data-hashtags="THGreenDay,CalendarSET"
+           data-via="grospector"
+           data-related="twitterapi,twitter"
+           data-show-count="false"
+           target="_blank">
+            <div class="row">
+                <div class="column left" style="">
+                    <img src="~/images/logo/twitter.svg" />
+                </div>
+                <div class="column right" style="">
+                    <p><b>Twitter</b></p>
+                </div>
+            </div>
+        </a>
+
+        <a class="" onclick="copyToClipboard('@ShareUrl',true)" data-toggle="popover" data-placement="top" data-content="Copied">
+            <div class="row">
+                <div class="column left" style="">
+                    <img src="~/images/logo/copylink.svg" />
+                </div>
+                <div class="column right" style="">
+                    <p><b>Copy Link</b></p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    @*<hr style="border: 1px solid #000000;">
+
+    <p style="color: #646464;font-size: 24px;margin-bottom: 0.5rem;"><b>@Localizer["contact"]</b></p>
+    <p style="color: #646464;font-size: 24px;line-height: 0px;">@Localizer["contact1"]</p>*@
+</section>

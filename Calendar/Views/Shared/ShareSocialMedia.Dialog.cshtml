@@ -1,0 +1,37 @@
+﻿@model Calendar.Models.ShareDialogModels
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+
+    string ShareUrl = Model.Url;
+    string ShareTitle = "TestTitle";
+
+
+    string twitter = "https://twitter.com/intent/tweet?" + "text=%0A%0A" + "url=" + ShareUrl + "%0A%0Ahashtags=caretheworldday%0A&hashtags=carethewild&hashtags=carethebear&hashtags=carethewhale%0Ahashtags=SETMakeitWorkforEveryone";
+}
+
+<a class="facebook" href="#" onclick="share_fb('@ShareUrl','@ShareTitle',450,450);return false;" rel="nofollow" share_url="@ShareUrl" target="_blank">
+    <img src="~/images/logo/facebookdialog.svg" />
+</a>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<a class="twitter" href="@twitter"
+   data-size="large"
+   data-text="THGreenDay"
+   data-url="@ShareUrl"
+   data-hashtags="THGreenDay,CalendarSET"
+   data-via="grospector"
+   data-related="twitterapi,twitter"
+   data-show-count="false"
+   target="_blank">
+    <img src="~/images/logo/twitterdialog.svg" />
+</a>
+
+<a class="copylink copylinkpopup" onclick="copyToClipboard('@ShareUrl')" data-toggle="popover" data-placement="top" data-content="Copied">
+    <img src="~/images/logo/copylinkdialog.svg" />
+</a>

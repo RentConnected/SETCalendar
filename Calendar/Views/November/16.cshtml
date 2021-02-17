@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+
+    string CurrentUrl = ViewData["Url"].ToString();
+    string BaseUrl = ViewData["BaseUrl"].ToString();
+    string ImageUrl = ViewData["Image"].ToString();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/images/logo/set.svg">
+
+    <link rel=”canonical” href="@CurrentUrl" />
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″ />
+    <meta name="description" content="@ViewData["Description"]">
+
+    <meta property="og:url" content="@CurrentUrl" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="@ViewData["Description"]" />
+    <meta property="og:image" content="@ImageUrl" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.month.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body style="">
+    <header>
+        <nav>
+            <div class="">
+                <div class="d-flex header-nav">
+                    <div class="mr-auto p-2">
+                        <img src="~/images/logo/set.svg" class="logo-set" />
+                    </div>
+                    <div class="p-2 div-setmarkeitwork">
+                        <a href="@Url.Action("Index", "Home")">
+                            <img src="~/images/shared/home.svg" class="logo-home" />
+                        </a>
+                        <a data-toggle="modal" data-target="#menu">
+                            <img src="~/images/shared/menu.svg" class="logo-menu" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="">
+        <main role="main" class="pb-3">
+            <partial name="content" />
+
+            <script>
+                var x = window.matchMedia("(max-width: 1100px)");
+                x.addListener(openDialog(x));
+
+                function openDialog(x) {
+                    if (x.matches) {
+                        $('#dialogmobile16').modal('show');
+                    } else {
+                        $('#dialog16').modal('show');
+                    }
+                }
+
+                $(document).ready(function () {
+                    openDialog(x);
+                });
+            </script>
+        </main>
+    </div>
+
+    <section>
+        <div class="modal fade hide" id="menu" tabindexdialog="-1" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog modal-dialog-centered custom-size-dialog-sharesocial" style="overflow-y:hidden">
+                <div class="modal-content">
+                    <a class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <img src="~/images/shared/button-close-black.svg" style="width:4vw;max-width: 30px;" />
+                    </a>
+                    <div class="share-panel-dialog-sharesocial">
+                        @await Html.PartialAsync("~/Views/Shared/ShareSocialMedia.cshtml", new ShareDialogModels() { Url = BaseUrl })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
